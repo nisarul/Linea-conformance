@@ -1,0 +1,19 @@
+{
+  "id": "08-unknown-ancestor/01-rejects-fabricated-attributes",
+  "spec": "CCGGS-1.1.0",
+  "section": "5.3",
+  "description": "Creating an unknown-ancestor with substantive attributes must be refused with FABRICATION_ATTEMPT",
+  "setup": {},
+  "operation": {
+    "kind": "CreatePersonViaProposal",
+    "person": {
+      "id": "U",
+      "unknown": true,
+      "names": [{ "text": "MadeUp", "type": "given", "preferred": true }]
+    }
+  },
+  "expected": {
+    "outcome": "error",
+    "code": "FABRICATION_ATTEMPT"
+  }
+}

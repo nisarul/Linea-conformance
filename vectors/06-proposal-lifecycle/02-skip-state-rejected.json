@@ -1,0 +1,28 @@
+{
+  "id": "06-proposal-lifecycle/02-skip-state-rejected",
+  "spec": "CCGGS-1.1.0",
+  "section": "8.3",
+  "description": "Draft -> Accepted skips required intermediate states; must be rejected",
+  "setup": {
+    "proposals": [
+      {
+        "id": "p1",
+        "state": "Draft",
+        "action": "Create",
+        "entityKind": "Person"
+      }
+    ]
+  },
+  "operation": {
+    "kind": "ProposalTransition",
+    "proposalId": "p1",
+    "to": "Accepted",
+    "actor": "x",
+    "timestamp": 1,
+    "reason": ""
+  },
+  "expected": {
+    "outcome": "error",
+    "code": "INVALID_PROPOSAL_TRANSITION"
+  }
+}

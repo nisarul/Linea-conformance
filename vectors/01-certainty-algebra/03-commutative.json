@@ -1,0 +1,15 @@
+{
+  "id": "01-certainty-algebra/03-commutative",
+  "spec": "CCGGS-1.1.0",
+  "section": "6.1",
+  "description": "Algebra is commutative: result is independent of input order",
+  "setup": {},
+  "operation": {
+    "kind": "CertaintyAlgebra",
+    "input": ["Probable", "Certain"]
+  },
+  "expected": {
+    "outcome": "ok",
+    "result": "Probable"
+  }
+}

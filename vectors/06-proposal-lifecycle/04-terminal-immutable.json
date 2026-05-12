@@ -1,0 +1,28 @@
+{
+  "id": "06-proposal-lifecycle/04-terminal-immutable",
+  "spec": "CCGGS-1.1.0",
+  "section": "8.3",
+  "description": "A terminal-state proposal cannot be re-transitioned",
+  "setup": {
+    "proposals": [
+      {
+        "id": "p1",
+        "state": "Accepted",
+        "action": "Create",
+        "entityKind": "Person"
+      }
+    ]
+  },
+  "operation": {
+    "kind": "ProposalTransition",
+    "proposalId": "p1",
+    "to": "Rejected",
+    "actor": "curator",
+    "timestamp": 5,
+    "reason": "oops"
+  },
+  "expected": {
+    "outcome": "error",
+    "code": "IMMUTABLE_TERMINAL_PROPOSAL"
+  }
+}

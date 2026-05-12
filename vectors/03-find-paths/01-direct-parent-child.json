@@ -1,0 +1,44 @@
+{
+  "id": "03-find-paths/01-direct-parent-child",
+  "spec": "CCGGS-1.1.0",
+  "section": "9.1",
+  "description": "A direct ParentChild edge yields exactly one length-1 lineage path",
+  "setup": {
+    "persons": [
+      { "id": "A" },
+      { "id": "B" }
+    ],
+    "relationships": [
+      {
+        "id": "r1",
+        "type": "ParentChild",
+        "from": "A",
+        "to": "B",
+        "certainty": "Certain",
+        "continuity": { "state": "Continuous" }
+      }
+    ]
+  },
+  "operation": {
+    "kind": "FindPaths",
+    "from": "A",
+    "to": "B",
+    "options": { "includeAffinal": false }
+  },
+  "expected": {
+    "outcome": "ok",
+    "result": {
+      "paths": [
+        {
+          "from": "A",
+          "to": "B",
+          "length": 1,
+          "certainty": "Certain",
+          "totalGap": 0,
+          "gapEdges": 0,
+          "classification": "lineage"
+        }
+      ]
+    }
+  }
+}

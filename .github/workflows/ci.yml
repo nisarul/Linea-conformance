@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.26"
+          cache: true
+      - name: Validate vector JSON
+        run: |
+          set -e
+          fail=0
+          while IFS= read -r f; do
+            if ! python3 -c "import json,sys; json.load(open(sys.argv[1]))" "$f"; then
+              echo "::error file=$f::invalid JSON"
+              fail=1
+            fi
+          done < <(find vectors -name '*.json' -type f)
+          exit $fail
+      - name: Run conformance suite
+        working-directory: runner-go
+        run: go test -count=1 ./...

@@ -1,0 +1,15 @@
+{
+  "id": "01-certainty-algebra/01-min-certain-probable",
+  "spec": "CCGGS-1.1.0",
+  "section": "6.1",
+  "description": "Weakest-link of Certain and Probable is Probable",
+  "setup": {},
+  "operation": {
+    "kind": "CertaintyAlgebra",
+    "input": ["Certain", "Probable"]
+  },
+  "expected": {
+    "outcome": "ok",
+    "result": "Probable"
+  }
+}

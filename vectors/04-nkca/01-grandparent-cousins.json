@@ -1,0 +1,32 @@
+{
+  "id": "04-nkca/01-grandparent-cousins",
+  "spec": "CCGGS-1.1.0",
+  "section": "9.6",
+  "description": "Two grandchildren share a common grandparent (NKCA = GP, total generations = 4)",
+  "setup": {
+    "persons": [
+      { "id": "GP" }, { "id": "P1" }, { "id": "P2" },
+      { "id": "A" },  { "id": "B" }
+    ],
+    "relationships": [
+      { "id": "r1", "type": "ParentChild", "from": "GP", "to": "P1", "certainty": "Certain", "continuity": { "state": "Continuous" } },
+      { "id": "r2", "type": "ParentChild", "from": "GP", "to": "P2", "certainty": "Certain", "continuity": { "state": "Continuous" } },
+      { "id": "r3", "type": "ParentChild", "from": "P1", "to": "A",  "certainty": "Certain", "continuity": { "state": "Continuous" } },
+      { "id": "r4", "type": "ParentChild", "from": "P2", "to": "B",  "certainty": "Certain", "continuity": { "state": "Continuous" } }
+    ]
+  },
+  "operation": {
+    "kind": "NKCA",
+    "a": "A",
+    "b": "B"
+  },
+  "expected": {
+    "outcome": "ok",
+    "result": {
+      "ancestorId": "GP",
+      "ancestorIsUnknown": false,
+      "totalGenerations": 4,
+      "combinedCertainty": "Certain"
+    }
+  }
+}

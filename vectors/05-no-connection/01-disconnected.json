@@ -1,0 +1,21 @@
+{
+  "id": "05-no-connection/01-disconnected",
+  "spec": "CCGGS-1.1.0",
+  "section": "9.2",
+  "description": "Two persons with no relationships: result must be NO_KNOWN_CONNECTION",
+  "setup": {
+    "persons": [
+      { "id": "A" },
+      { "id": "B" }
+    ]
+  },
+  "operation": {
+    "kind": "FindPaths",
+    "from": "A",
+    "to": "B"
+  },
+  "expected": {
+    "outcome": "error",
+    "code": "NO_KNOWN_CONNECTION"
+  }
+}

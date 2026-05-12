@@ -1,0 +1,31 @@
+{
+  "id": "04-nkca/02-unknown-ancestor-flagged",
+  "spec": "CCGGS-1.1.0",
+  "section": "9.6",
+  "description": "Two known siblings sharing an unknown-ancestor placeholder: NKCA must be flagged unknown",
+  "setup": {
+    "persons": [
+      { "id": "U", "unknown": true },
+      { "id": "A" },
+      { "id": "B" }
+    ],
+    "relationships": [
+      { "id": "r1", "type": "ParentChild", "from": "U", "to": "A", "certainty": "Probable", "continuity": { "state": "Continuous" } },
+      { "id": "r2", "type": "ParentChild", "from": "U", "to": "B", "certainty": "Probable", "continuity": { "state": "Continuous" } }
+    ]
+  },
+  "operation": {
+    "kind": "NKCA",
+    "a": "A",
+    "b": "B"
+  },
+  "expected": {
+    "outcome": "ok",
+    "result": {
+      "ancestorId": "U",
+      "ancestorIsUnknown": true,
+      "totalGenerations": 2,
+      "combinedCertainty": "Probable"
+    }
+  }
+}

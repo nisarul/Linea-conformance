@@ -1,0 +1,10 @@
+# Test artefacts
+runner-go/coverage*
+*.test
+*.test.exe
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

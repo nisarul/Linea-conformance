@@ -1,0 +1,30 @@
+{
+  "id": "07-cycle-detection/01-rejects-self-ancestry",
+  "spec": "GGCFS-1.1.0",
+  "section": "6.2",
+  "description": "Adding a parent->child edge that closes a cycle must be refused with CYCLE_DETECTED",
+  "setup": {
+    "persons": [
+      { "id": "A" }, { "id": "B" }, { "id": "C" }
+    ],
+    "relationships": [
+      { "id": "r1", "type": "ParentChild", "from": "A", "to": "B", "certainty": "Certain", "continuity": { "state": "Continuous" } },
+      { "id": "r2", "type": "ParentChild", "from": "B", "to": "C", "certainty": "Certain", "continuity": { "state": "Continuous" } }
+    ]
+  },
+  "operation": {
+    "kind": "AddRelationshipViaProposal",
+    "relationship": {
+      "id": "r3",
+      "type": "ParentChild",
+      "from": "C",
+      "to": "A",
+      "certainty": "Certain",
+      "continuity": { "state": "Continuous" }
+    }
+  },
+  "expected": {
+    "outcome": "error",
+    "code": "CYCLE_DETECTED"
+  }
+}

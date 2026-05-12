@@ -1,0 +1,28 @@
+{
+  "id": "06-proposal-lifecycle/03-reject-requires-reason",
+  "spec": "CCGGS-1.1.0",
+  "section": "8.3",
+  "description": "Rejection without a reason is invalid",
+  "setup": {
+    "proposals": [
+      {
+        "id": "p1",
+        "state": "UnderReview",
+        "action": "Create",
+        "entityKind": "Person"
+      }
+    ]
+  },
+  "operation": {
+    "kind": "ProposalTransition",
+    "proposalId": "p1",
+    "to": "Rejected",
+    "actor": "curator",
+    "timestamp": 5,
+    "reason": ""
+  },
+  "expected": {
+    "outcome": "error",
+    "code": "INVALID_ARGUMENT"
+  }
+}

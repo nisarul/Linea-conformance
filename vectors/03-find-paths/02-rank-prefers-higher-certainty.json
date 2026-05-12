@@ -1,0 +1,34 @@
+{
+  "id": "03-find-paths/02-rank-prefers-higher-certainty",
+  "spec": "CCGGS-1.1.0",
+  "section": "9.3",
+  "description": "Two equally-long paths: the one with higher weakest-link certainty must come first",
+  "setup": {
+    "persons": [
+      { "id": "A" },
+      { "id": "X" },
+      { "id": "Y" },
+      { "id": "C" }
+    ],
+    "relationships": [
+      { "id": "r1", "type": "ParentChild", "from": "A", "to": "X", "certainty": "Probable", "continuity": { "state": "Continuous" } },
+      { "id": "r2", "type": "ParentChild", "from": "X", "to": "C", "certainty": "Probable", "continuity": { "state": "Continuous" } },
+      { "id": "r3", "type": "ParentChild", "from": "A", "to": "Y", "certainty": "Certain",  "continuity": { "state": "Continuous" } },
+      { "id": "r4", "type": "ParentChild", "from": "Y", "to": "C", "certainty": "Certain",  "continuity": { "state": "Continuous" } }
+    ]
+  },
+  "operation": {
+    "kind": "FindPaths",
+    "from": "A",
+    "to": "C"
+  },
+  "expected": {
+    "outcome": "ok",
+    "result": {
+      "paths": [
+        { "from": "A", "to": "C", "length": 2, "certainty": "Certain",  "totalGap": 0, "gapEdges": 0, "classification": "lineage" },
+        { "from": "A", "to": "C", "length": 2, "certainty": "Probable", "totalGap": 0, "gapEdges": 0, "classification": "lineage" }
+      ]
+    }
+  }
+}

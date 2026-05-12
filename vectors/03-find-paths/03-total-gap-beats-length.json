@@ -1,0 +1,32 @@
+{
+  "id": "03-find-paths/03-total-gap-beats-length",
+  "spec": "CCGGS-1.1.0",
+  "section": "9.3",
+  "description": "Smaller total gap size is preferred over shorter length",
+  "setup": {
+    "persons": [
+      { "id": "A" },
+      { "id": "X" },
+      { "id": "C" }
+    ],
+    "relationships": [
+      { "id": "r1", "type": "ParentChild", "from": "A", "to": "C", "certainty": "Certain", "continuity": { "state": "Gapped", "gapKnown": true, "gapSize": 5 } },
+      { "id": "r2", "type": "ParentChild", "from": "A", "to": "X", "certainty": "Certain", "continuity": { "state": "Continuous" } },
+      { "id": "r3", "type": "ParentChild", "from": "X", "to": "C", "certainty": "Certain", "continuity": { "state": "Continuous" } }
+    ]
+  },
+  "operation": {
+    "kind": "FindPaths",
+    "from": "A",
+    "to": "C"
+  },
+  "expected": {
+    "outcome": "ok",
+    "result": {
+      "paths": [
+        { "from": "A", "to": "C", "length": 2, "certainty": "Certain", "totalGap": 0, "gapEdges": 0, "classification": "lineage" },
+        { "from": "A", "to": "C", "length": 1, "certainty": "Certain", "totalGap": 5, "gapEdges": 1, "classification": "lineage" }
+      ]
+    }
+  }
+}

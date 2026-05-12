@@ -1,0 +1,28 @@
+{
+  "id": "06-proposal-lifecycle/01-draft-to-submitted",
+  "spec": "CCGGS-1.1.0",
+  "section": "8.3",
+  "description": "Draft -> Submitted is a legal transition",
+  "setup": {
+    "proposals": [
+      {
+        "id": "p1",
+        "state": "Draft",
+        "action": "Create",
+        "entityKind": "Person"
+      }
+    ]
+  },
+  "operation": {
+    "kind": "ProposalTransition",
+    "proposalId": "p1",
+    "to": "Submitted",
+    "actor": "alice",
+    "timestamp": 10,
+    "reason": ""
+  },
+  "expected": {
+    "outcome": "ok",
+    "result": { "newState": "Submitted" }
+  }
+}
