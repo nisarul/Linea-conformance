@@ -3,7 +3,7 @@ module github.com/nisarul/Linea-conformance/runner-go
 go 1.25
 
 require (
-	github.com/nisarul/Linea-core v0.0.0-20260512071023-b3f8ec78ebd8
+	github.com/nisarul/Linea-core v0.1.0
 	github.com/stretchr/testify v1.10.0
 )
 
